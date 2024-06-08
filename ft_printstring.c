@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printstring.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 20:41:43 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/08 19:50:18 by aeberius         ###   ########.fr       */
+/*   Created: 2024/06/08 17:51:52 by aeberius          #+#    #+#             */
+/*   Updated: 2024/06/08 20:19:42 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-void	ft_printchar(va_list args, int *final_return);
-void	ft_printdigits(va_list args, int *final_return);
-void	ft_printstring(va_list args, int *final_return);
+void	ft_printstring(va_list args, int *final_return)
+{
+	int		i;
+	char	*s;
 
-#endif
+	i = 0;
+	s = va_arg(args, char*);
+	while (s[i] != '\0')
+	{
+		write (1, &s[i], 1);
+		i++;
+	}
+	*final_return = *final_return + i;
+}

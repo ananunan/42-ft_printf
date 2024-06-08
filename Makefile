@@ -6,7 +6,7 @@
 #    By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/30 20:32:14 by aeberius          #+#    #+#              #
-#    Updated: 2024/05/30 20:40:34 by aeberius         ###   ########.fr        #
+#    Updated: 2024/06/08 18:15:57 by aeberius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME = libftprintf.a
 
-C.FILES = ft_printf.c
+C.FILES = ft_printf.c ft_printchar.c
 
 OBJECTS = $(C.FILES:.c=.o)
 

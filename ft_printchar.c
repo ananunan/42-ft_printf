@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 20:41:43 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/08 19:50:18 by aeberius         ###   ########.fr       */
+/*   Created: 2024/06/08 15:15:23 by aeberius          #+#    #+#             */
+/*   Updated: 2024/06/08 18:44:28 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "ft_printf.h"
 
-int		ft_printf(const char *format, ...);
-void	ft_printchar(va_list args, int *final_return);
-void	ft_printdigits(va_list args, int *final_return);
-void	ft_printstring(va_list args, int *final_return);
+void	ft_printchar(va_list args, int *final_return)
+{
+	char	c;
 
-#endif
+	c = va_arg(args, int);
+	write (1, &c, 1);
+	*final_return = *final_return + 1;
+}
