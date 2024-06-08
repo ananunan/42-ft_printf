@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 20:40:42 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/08 20:25:14 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/06/08 21:00:50 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_printf(const char *format, ...)
 				ft_xxx (args, &final_return); */
 			if (*format == 'd' || *format == 'i')
 				ft_printdigits (args, &final_return);
+			if (*format == 'u');
 		}
 		else
 		{
@@ -44,7 +45,7 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return(final_return);
 }
- #include <stdio.h>
+/*  #include <stdio.h>
 int main ()
 {
 	int a;
@@ -55,4 +56,4 @@ int main ()
 
 	printf("Original = %d \n", b);
 	printf("Meu = %d \n", a);
-}
+} */
