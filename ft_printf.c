@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 20:40:42 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/09 12:10:16 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/06/09 20:24:08 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int	final_return;
+	va_list	args;
+	int		final_return;
 
 	final_return = 0;
 	va_start(args, format);
-
 	while (*format != '\0')
 	{
 		if (*format == '%')
@@ -29,13 +28,13 @@ int	ft_printf(const char *format, ...)
 				ft_printchar(args, &final_return);
 			if (*format == 's')
 				ft_printstring (args, &final_return);
-/* 			if (*format == 'p')
+/*			if (*format == 'p')
 				ft_xxx (args, &final_return); */
 			if (*format == 'd' || *format == 'i')
 				ft_printdigits (args, &final_return);
  			if (*format == 'u')
 				ft_unsignedprint(args, &final_return);
-/* 			if (*format == 'x' || *format == 'X')
+/*			if (*format == 'x' || *format == 'X')
 				ft_xxxx (args, &final_return); */
 			if (*format == '%')
 				ft_putchar('%', &final_return);

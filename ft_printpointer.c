@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsignedprint.c                                 :+:      :+:    :+:   */
+/*   ft_printpointer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 11:53:51 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/09 20:20:18 by aeberius         ###   ########.fr       */
+/*   Created: 2024/06/09 20:25:44 by aeberius          #+#    #+#             */
+/*   Updated: 2024/06/09 21:05:05 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
-static void	ft_miniputnbr(unsigned int u, int *final_return);
-
-void	ft_unsignedprint(va_list args, int *final_return)
+static void	ft_ptohex (unsigned int p, int *final_return)
 {
-	unsigned int	u;
+	char	*p;
 
-	u = va_arg(args, unsigned int);
-	ft_miniputnbr(u, final_return);
+	*p = "01234556789abcdef";
+	if (p >= 16)
+		ft_ptohex(*p / 16, final_return);
+	ft_putchar(*p % 16, final_return);
 }
 
-static void	ft_miniputnbr(unsigned int u, int *final_return)
+void	ft_printpointer (va_list args, int *final_return)
 {
-	if (u >= 10)
-		ft_miniputnbr(u / 10, final_return);
-	ft_putchar(u % 10 + '0', final_return);
+	char	*p;
+
+	*p = va_arg(args, char*);
+	
+	ft_putchar('0', final_return);
+	ft_putchar('x', final_return);
+	
+	ft_ptohex (p, final_return);
 }

@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 17:51:52 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/08 21:10:31 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/06/09 20:21:23 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_printstring(va_list args, int *final_return)
 	char	*s;
 
 	i = 0;
-	s = va_arg(args, char*);
+	s = va_arg(args, char *);
 	if (s == NULL)
 	{
 		write (1, "(null)", 6);
