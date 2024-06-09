@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_unsignedprint.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 20:41:43 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/09 12:05:11 by aeberius         ###   ########.fr       */
+/*   Created: 2024/06/09 11:53:51 by aeberius          #+#    #+#             */
+/*   Updated: 2024/06/09 12:10:50 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "ft_printf.h"
+static void	ft_miniputnbr(unsigned int u, int *final_return);
 
-int		ft_printf(const char *format, ...);
-void	ft_putchar(char c, int *final_return);
-void	ft_printchar(va_list args, int *final_return);
-void	ft_printdigits(va_list args, int *final_return);
-void	ft_printstring(va_list args, int *final_return);
-void	ft_unsignedprint(va_list args, int *final_return);
+void	ft_unsignedprint(va_list args, int *final_return)
+{
+	unsigned int	u;
 
-
-#endif
+	u = va_arg(args, unsigned int);
+	ft_miniputnbr(u, final_return);
+}
+static void	ft_miniputnbr(unsigned int u, int *final_return)
+{
+	if (u >= 10)
+		ft_miniputnbr(u / 10, final_return);
+	ft_putchar(u % 10 + '0', final_return);
+}

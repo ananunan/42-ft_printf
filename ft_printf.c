@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 20:40:42 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/08 21:00:50 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/06/09 12:10:16 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,33 @@ int	ft_printf(const char *format, ...)
 				ft_xxx (args, &final_return); */
 			if (*format == 'd' || *format == 'i')
 				ft_printdigits (args, &final_return);
-			if (*format == 'u');
+ 			if (*format == 'u')
+				ft_unsignedprint(args, &final_return);
+/* 			if (*format == 'x' || *format == 'X')
+				ft_xxxx (args, &final_return); */
+			if (*format == '%')
+				ft_putchar('%', &final_return);
 		}
 		else
 		{
 			write (1, format, 1);
-			final_return ++;
+			final_return++;
 		}
 		format++;
 	}
 	va_end(args);
 	return(final_return);
 }
-/*  #include <stdio.h>
+/*   #include <stdio.h>
 int main ()
 {
 	int a;
 	int b;
 
-	a=ft_printf("Gregorio %d\n", -2147483648);
-	b=printf("Gregorio %d\n", -2147483648);
+	a=ft_printf("Gregorio %% %d\n", -2147483648);
+	b=printf("Gregorio %% %d\n", -2147483648);
 
 	printf("Original = %d \n", b);
 	printf("Meu = %d \n", a);
-} */
+}
+ */
