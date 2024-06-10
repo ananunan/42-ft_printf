@@ -6,11 +6,14 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 20:40:42 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/09 20:24:08 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:29:13 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	ft_checkpercent(va_list args, const char *format,
+				int *final_return);
 
 int	ft_printf(const char *format, ...)
 {
@@ -19,46 +22,35 @@ int	ft_printf(const char *format, ...)
 
 	final_return = 0;
 	va_start(args, format);
+	ft_checkpercent (args, format, &final_return);
+	va_end (args);
+	return (final_return);
+}
+
+static void	ft_checkpercent(va_list args, const char *format, int *final_return)
+{
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
 			if (*format == 'c')
-				ft_printchar(args, &final_return);
+				ft_printchar(args, final_return);
 			if (*format == 's')
-				ft_printstring (args, &final_return);
-/*			if (*format == 'p')
-				ft_xxx (args, &final_return); */
+				ft_printstring(args, final_return);
+			if (*format == 'p')
+				ft_printpointer(args, final_return);
 			if (*format == 'd' || *format == 'i')
-				ft_printdigits (args, &final_return);
- 			if (*format == 'u')
-				ft_unsignedprint(args, &final_return);
-/*			if (*format == 'x' || *format == 'X')
-				ft_xxxx (args, &final_return); */
+				ft_printdigits(args, final_return);
+			if (*format == 'u')
+				ft_printunsigned(args, final_return);
+			if (*format == 'x' || *format == 'X')
+				ft_printhex(args, *format, final_return);
 			if (*format == '%')
-				ft_putchar('%', &final_return);
+				ft_putchar('%', final_return);
 		}
 		else
-		{
-			write (1, format, 1);
-			final_return++;
-		}
+			ft_putchar(*format, final_return);
 		format++;
 	}
-	va_end(args);
-	return(final_return);
 }
-/*   #include <stdio.h>
-int main ()
-{
-	int a;
-	int b;
-
-	a=ft_printf("Gregorio %% %d\n", -2147483648);
-	b=printf("Gregorio %% %d\n", -2147483648);
-
-	printf("Original = %d \n", b);
-	printf("Meu = %d \n", a);
-}
- */

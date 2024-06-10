@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsignedprint.c                                 :+:      :+:    :+:   */
+/*   ft_printunsigned.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 11:53:51 by aeberius          #+#    #+#             */
-/*   Updated: 2024/06/09 20:20:18 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:21:24 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_miniputnbr(unsigned int u, int *final_return);
 
-void	ft_unsignedprint(va_list args, int *final_return)
+void	ft_printunsigned(va_list args, int *final_return)
 {
 	unsigned int	u;
 
